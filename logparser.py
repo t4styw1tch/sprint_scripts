@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-#This .py file is a simple log parser tha generates a csv file for easier viewing within a Linux system
+#This .py file is a simple log parser tha generates a csv file for easier viewing within a Linux system.
 #Jennira Hill - 20260422: Initial Version
 
 #imports
 import sys, csv, re, os
 
+#Error Processing if the incorrect number of arguements was passed to script.
 if len(sys.argv) != 5:
     print("Usage: logparser.py <input_file> <filter_1> <filter_2> <output_file.csv>")
     sys.exit(1)
@@ -21,6 +22,7 @@ output_file = sys.argv[4]
 log_output = []
 hits = {}
 
+#Error Processing if the file cannot be found.
 if not os.path.isfile(input_file):
     print(f"Error: '{input_file}' not found.")
     sys.exit(1)
@@ -36,6 +38,7 @@ def extract_data(input_file, filter_1, filter_2, log_output, hits):
     Data is extracted line by line as dicts and then compiled into a list.
     Extracted data is timestamp, ip, username, and port. NOTE: Invalid user is stored as invalid user.
     """
+    #Created within try statement for Error catching and Processing.
     try:
         with open(input_file) as file:
             for line in file:
@@ -67,6 +70,7 @@ def extract_data(input_file, filter_1, filter_2, log_output, hits):
                         }
                 #Dicts saved to list and then returned for follow-on functions.
                     log_output.append(hits)
+    #The following are Error Processors for the following conditions: File not found, incorrect permissions to use specified file, and any unexpected errors.
     except FileNotFoundError:
         print(f"Error: File '{input_file}' not found.")
         sys.exit(1)
