@@ -19,9 +19,12 @@ Python3 with standard library
 *RE
 *sys
 *csv
+*os
 
 Linux OS
-*Current script tested
+*Current script tested on the following:
+Kali-linux-2025.1a
+Ununtu-linux-24.02
 
 ###Installing
 Within Linux terminal, use this command to clone the repo.
