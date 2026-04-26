@@ -25,9 +25,10 @@ def extract_data(input_file, filter_1, filter_2):
     """
     
     with open(input_file) as file:
+        line_lower = line.lower()
         for line in file:
             #First checks if line contains filter words before continuing with regex analysis.
-            if filter_1 in line and filter_2 in line:
+            if filter_1.lower in line_lower and filter_2.lower in line_lower:
                 print(line.strip())
                 #Regex groups: 1-timestamp, 2-username, 3-ip address, 4- port.
                 match = re.search(r"([A-Z][a-z]{2}\s+\d{1,2}\s+\d{2}:\d{2}:\d{2}).*?for (\w+).*?from (\d+\.\d+\.\d+\.\d+) port (\d+)", line)
