@@ -5,6 +5,13 @@
 #imports
 import sys, csv, re
 
+def main():
+    if len(sys.argv) != 5:
+        print("Usage: logparser.py <input_file> <filter_1> <filter_2> <output_file.csv>")
+        sys.exit(1)
+    extract_data(input_file, filter_1, filter_2)
+    write_csv(log_output, output_file)
+
 #variables
 input_file = sys.argv[1]
 filter_1 = sys.argv[2].lower()
@@ -65,14 +72,6 @@ def write_csv(log_output, output_file):
 
         writer.writeheader()
         writer.writerows(log_output)
-
-
-def main():
-    if len(sys.argv) != 5:
-        print("Usage: logparser.py <input_file> <filter_1> <filter_2> <output_file.csv>")
-        sys.exit(1)
-    extract_data(input_file, filter_1, filter_2)
-    write_csv(log_output, output_file)
 
 
 
