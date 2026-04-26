@@ -68,6 +68,9 @@ def write_csv(log_output, output_file):
 
 
 def main():
+    if len(sys.argv) != 5:
+        print("Usage: logparser.py <input_file> <filter_1> <filter_2> <output_file.csv>")
+        sys.exit(1)
     extract_data(input_file, filter_1, filter_2)
     write_csv(log_output, output_file)
 
