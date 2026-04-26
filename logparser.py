@@ -5,9 +5,9 @@
 #imports
 import sys, csv, re
 
- if len(sys.argv) != 5:
-        print("Usage: logparser.py <input_file> <filter_1> <filter_2> <output_file.csv>")
-        sys.exit(1)
+if len(sys.argv) != 5:
+    print("Usage: logparser.py <input_file> <filter_1> <filter_2> <output_file.csv>")
+    sys.exit(1)
      
 #variables
 input_file = sys.argv[1]
