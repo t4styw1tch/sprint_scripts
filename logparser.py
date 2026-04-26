@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 #This .py file is a simple log parser tha generates a csv file for easier viewing within a Linux system
 #Jennira Hill - 20260422: Initial Version
 
