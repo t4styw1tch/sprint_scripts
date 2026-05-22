@@ -60,7 +60,7 @@ Recommended Setup using a Virtual Environment
 
 2. Move into the project folder
 
-    cd sysinfo
+    cd sprint_scripts
    
 3. Create a virtual environment
 
@@ -91,7 +91,7 @@ Recommended Setup using a Virtual Environment
 -----------------Operation within Virtual Environment----------------
 1. Using a terminal, navigate to the folder where sysinfo.py is located
 
-  cd sysinfo
+  cd sprint_scripts
 
 2.(Optional) If psutil was installed in a virtual environment, activate the environment
 
