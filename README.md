@@ -72,7 +72,7 @@ Recommended Setup using a Virtual Environment
 
 5. Install dependencies inside the environment
 
-    python3 -m pip install psutil
+    pip install -r requirements.txt
 
 6. (Optional) Confirm install
 
