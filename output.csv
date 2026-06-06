@@ -1,0 +1,8 @@
+=== Geolocation Data ===
+Country,United States
+Region,WA
+City,Seattle
+ISP,Comcast Cable Communications
+=== Port Scan Data ===
+Port,State,Service
+53,open,domain
