@@ -31,6 +31,12 @@ As a tool:
 The full functionality of this tool is only viable if a publically available IP address is used. Limited or no geographic information may be retrieved from private IP addresses. This tool
 also only retrieves open port information and will not provide information about any closed ports.
 
+Development:
+This tool was developed using Python IDLE within a Kali Linux in a virtual environment which is a Debian-based distribution. Individual results may vary when using this tool with other Linux distributions. Limited testing was conducted using Ubuntu.
+
+Successful Tests:
+Kali Linux version 6.18.5
+Ubuntu version 26.04
 ---------------------------------------------------------------------
 -------------------------Requirements--------------------------------
 
