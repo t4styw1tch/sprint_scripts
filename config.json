@@ -1,0 +1,10 @@
+{
+    "thresholds": {
+        "disk": 80,
+        "memory": 90,
+        "cpu": 2.0,
+        "services": ["sshd", "cron"]
+    },
+    "log_file": "~/PythonProjects/healthmon/healthmon.log",
+    "alert_log": "~/PythonProjects/healthmon/alerts.log"
+}
