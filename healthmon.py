@@ -19,55 +19,85 @@ from logging.handlers import SysLogHandler
 #Functions
 
 def main():
-    config = load_config()
-    system_data = pull_info(config)
+    config_data = load_config()
+    system_data = pull_info(config_data)
+    check_threshold(system_data, config_data)
+ #   print(config_data)
+  #  print(system_data)
+    
 
 def load_config():
 
     with open(sys.argv[1], "r") as file:
-        config = json.load(file)
+        config_data = json.load(file)
 
-    return config
+    return config_data
 
 
-def pull_info(config):
-    data = {}
+def pull_info(config_data):
+    system_data = {}
     
-    disk_usage = psutil.disk_usage('/')
-    data["disk"] = disk_usage[3]
-
-    memory_usage = psutil.virtual_memory()
-    data["memory"] = memory_usage[2]
+    system_data["disk_usage"] = psutil.disk_usage('/').percent
     
 
-    cpu_usage = psutil.getloadavg()
-    data["cpu"] = cpu_usage[0]
+    system_data["memory_usage"] = psutil.virtual_memory().percent
+    
+
+    system_data["cpu_load_avg"] = psutil.getloadavg()[0]
    
-    for service in config["thresholds"]["services"]:
+    for service in config_data["thresholds"]["services"]:
         running = any(
             service.lower() in (p.info['name'] or "").lower()
             for p in psutil.process_iter(['name'])
             )
-        data[service] = "PASS" if running else "FAIL"
+        system_data[service] = "PASS" if running else "FAIL"
     
-    return data
+    return system_data
 
-def check_threshhold(system_data, config):
-    results = {}
+def check_threshold(system_data, config_data):
+
+    logger = logging.getLogger("healthmon")
+    logger.setLevel(logging.INFO)
+    logger.handlers.clear()
+    logger.propogate = False
+
+
+    formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 
     
+    health_handler = logging.FileHandler(config_data["log_file"])
+    health_handler.setLevel(logging.INFO)
+    health_handler.setFormatter(formatter)
+
+    alert_handler = logging.FileHandler(config_data["alert_log"])
+    alert_handler.setLevel(logging.WARNING)
+    alert_handler.setFormatter(formatter)
+
+    #sys_handler = SysLogHandler(
+
+    logger.addHandler(health_handler)
+    logger.addHandler(alert_handler)
     
     
+    for metric, limit in config_data["thresholds"].items():
 
+        if metric == "services":
+            continue
 
+        value = system_data[metric]
 
+        if value >= limit:
+            logger.warning(
+                f"{metric.upper()} threshold exceeded! "
+                f"Current: {value} Limit: {limit}"
+            )
 
-#def get_logs():
- #   logger = logging.getLogger("healthmon")
-
-  #  logger.warning("Disk at 85%")
-
-
+        else:
+            logger.info(
+                f"{metric.upper()} Current: {value} Limit: {limit}"
+            )
+            
+            
 
 
 
