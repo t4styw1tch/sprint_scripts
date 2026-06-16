@@ -117,7 +117,7 @@ def create_logger(config_data):
     alert_handler.setLevel(logging.WARNING)
     alert_handler.setFormatter(formatter)
 
-    syslog_handler = SysLogHandler(address='/dev/log')
+    syslog_handler = SysLogHandler(address=config_data["syslog"])
     syslog_handler.setLevel(logging.WARNING)
     syslog_handler.setFormatter(formatter)
 
