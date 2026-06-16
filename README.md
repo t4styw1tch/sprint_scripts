@@ -104,7 +104,8 @@ Recommended Setup using a Virtual Environment
 ---------------------------------------------------------------------
 --------------------Configuration Preparation------------------------
 Due to potential differences between file systems, some modification of the config.json is
-be required to output logs in the desired location.
+be required to output logs in the desired location. The script will not function correctly until
+this is addressed.
 
 Within config.json, alter the file path's for both log_file and alert_log as needed.
 
