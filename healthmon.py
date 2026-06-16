@@ -44,6 +44,8 @@ def main():
     check_threshold(system_data, config_data, logger)
 
 def parse_arguments():
+    """This function enables the use of the --check flag to be able to print to CLI if
+        desired. Will also catch errors in input."""
         
     parser = argparse.ArgumentParser()
 
