@@ -103,10 +103,14 @@ Recommended Setup using a Virtual Environment
 
 ---------------------------------------------------------------------
 --------------------Configuration Preparation------------------------
-Due to potential differences between file systems, some modification of the config.json may
+Due to potential differences between file systems, some modification of the config.json is
 be required to output logs in the desired location.
 
 Within config.json, alter the file path's for both log_file and alert_log as needed.
+
+Sample file path:
+
+/home/<devadmin>/sprint_scripts/
 
 ---------------------------------------------------------------------
 ----------------------------Execution--------------------------------
