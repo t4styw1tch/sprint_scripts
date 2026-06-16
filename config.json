@@ -10,7 +10,7 @@
         "cron"
     ],
     
-    "log_file": "/home/devadmin/sprint_scripts/healthmon/healthmon.log",
-    "alert_log": "/home/devadmin/sprint_scripts/healthmon/alerts.log",
+    "log_file": "/home/devadmin/sprint_scripts/healthmon.log",
+    "alert_log": "/home/devadmin/sprint_scripts/alerts.log",
     "syslog": "/dev/log"
 }
