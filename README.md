@@ -140,6 +140,15 @@ In order to modify the thresholds for any of these metrics,
 simply replace the numbers within corresponding with which metric you want to alter.
 The same applies to the services you may wish to monitor, simply add or change the
 pre-existing entries within services.
+
+---------------------------------------------------------------------
+--------------------Optional- Cron Scheduling------------------------
+
+This script is fully capable of being scheduled via cron using the following example. This
+example was successful and based on having created a virtual environment for the dependencies.
+
+*/5 * * * * /home/sprint_scripts/healthmon/venv/bin/python3 /home/sprint_scripts/healthmon/healthmon.py /home/sprint_scripts/healthmon/config.json
+
 ---------------------------------------------------------------------
 --------------------------How it works-------------------------------
 
