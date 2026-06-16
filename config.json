@@ -5,6 +5,6 @@
         "cpu": 2.0,
         "services": ["sshd", "cron"]
     },
-    "log_file": "/home/PythonProjects/healthmon/healthmon.log",
-    "alert_log": "/home/PythonProjects/healthmon/alerts.log"
+    "log_file": "/home/sprint_scripts/healthmon/healthmon.log",
+    "alert_log": "/home/sprint_scripts/healthmon/alerts.log"
 }
