@@ -1,10 +1,15 @@
 {
     "thresholds": {
-        "disk": 80,
-        "memory": 90,
-        "cpu": 2.0,
-        "services": ["sshd", "cron"]
+        "disk_usage": 80,
+        "memory_usage": 90,
+        "cpu_load_avg": 2.0,
     },
+    
+    "services": [
+        "sshd",
+        "cron"
+    ],
+    
     "log_file": "/home/sprint_scripts/healthmon/healthmon.log",
     "alert_log": "/home/sprint_scripts/healthmon/alerts.log"
 }
