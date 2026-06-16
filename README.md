@@ -25,6 +25,8 @@ Log entries that are generated following the format below:
 
 ---------------------------------------------------------------------
 -------------------------Requirements--------------------------------
+This script was developed and tested on Linux Ubuntu ver 26.04.
+Modification may be required for other distributions.
 
 Python Version 3.8+
 
@@ -92,14 +94,24 @@ Recommended Setup using a Virtual Environment
 5. Open terminal and run the same commands above
 
 ---------------------------------------------------------------------
------------------Operation within Virtual Environment----------------
+-----------------Creation of Virtual Environment---------------------
 1. Using a terminal, navigate to the folder where healthmon.py and config.json are located
 
 2.(Optional) If psutil was installed in a virtual environment, activate the environment
 
   source venv/bin/activate
 
-3. Execute the script with one of the following commands based on desired output
+---------------------------------------------------------------------
+--------------------Configuration Preparation------------------------
+Due to potential differences between file systems, some modification of the config.json may
+be required to output logs in the desired location.
+
+Within config.json, alter the file path's for both log_file and alert_log as needed.
+
+---------------------------------------------------------------------
+----------------------------Execution--------------------------------
+
+Execute the script with one of the following commands based on desired output
    
 Will only log system health information:
 
@@ -111,6 +123,7 @@ Will both log information as well as print logs to CLI for viewing:
 
 ---------------------------------------------------------------------
 ---------------------Configuration Modification----------------------
+
 Basic config.json format:
 {
     "thresholds": {
@@ -119,10 +132,14 @@ Basic config.json format:
         "cpu": 2.0,
         "services": ["sshd", "cron"]
     },
-    "log_file": "~/PythonProjects/healthmon/healthmon.log",
-    "alert_log": "~/PythonProjects/healthmon/alerts.log"
+    "log_file": "/home/sprint_scripts/healthmon/healthmon.log",
+    "alert_log": "/home/sprint_scripts/healthmon/alerts.log"
 }
 
+In order to modify the thresholds for any of these metrics,
+simply replace the numbers within corresponding with which metric you want to alter.
+The same applies to the services you may wish to monitor, simply add or change the
+pre-existing entries within services.
 ---------------------------------------------------------------------
 --------------------------How it works-------------------------------
 
