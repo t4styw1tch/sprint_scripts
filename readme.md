@@ -50,7 +50,7 @@ On target hosts:
 
 ---
 ##### WARNING ####
-Before progressing, eunsure that you are able to access to the target device via SSH keys.
+Before progressing, ensure that you are able to access to the target device via SSH keys.
 
 DISCLAIMER: The creation of an password-less user belonging to the sudo group is BAD PRACTICE and
         in its current state, the configure.yml playbook should be either edited to make the created
