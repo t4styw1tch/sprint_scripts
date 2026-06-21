@@ -1,0 +1,64 @@
+---
+- name: Deploy Health Monitor Script
+  hosts: all
+  become: true
+
+  vars:
+    app_dir: /opt/healthmon
+    venv_dir: /opt/healthmon/venv
+    app_user: automation_user
+
+  tasks:
+
+     - name: Install Python packages
+       package:
+          name:
+            - python3
+            - python3-pip
+            - python3-venv
+          state: present
+
+     - name: Create application directory
+       file:
+          path: "{{ app_dir }}"
+          state: directory
+          owner: "{{ app_user }}"
+          group: "{{ app_user }}"
+          mode: '0755'
+
+     - name: Copy healthmon.py
+       copy:
+          src: files/healthmon/healthmon.py
+          dest: "{{ app_dir }}/healthmon.py"
+          owner: "{{ app_user }}"
+          group: "{{ app_user }}"
+          mode: '0755'
+
+     - name: Copy config.json
+       copy:
+          src: files/healthmon/config.json
+          dest: "{{ app_dir }}/config.json"
+          mode: '0644'
+
+     - name: Copy requirements.txt
+       copy:
+          src: files/healthmon/requirements.txt
+          dest: "{{ app_dir }}/requirements.txt"
+          mode: '0644'
+
+     - name: Create virtual environment
+       command:
+          cmd: python3 -m venv {{ venv_dir }}
+          creates: "{{ venv_dir }}/bin/python"
+
+     - name: Install Python requirements
+       pip:
+          requirements: "{{ app_dir }}/requirements.txt"
+          virtualenv: "{{ venv_dir }}"
+
+     - name: Create cron job
+       cron:
+          name: "Healthmon"
+          minute: "*/5"
+          user: "{{ app_user }}"
+          job: "{{ venv_dir }}/bin/python {{ app_dir }}/healthmon.py {{ app_dir }}/config.json"
