@@ -1,0 +1,16 @@
+{
+    "thresholds": {
+        "disk_usage": 80,
+        "memory_usage": 90,
+        "cpu_load_avg": 2.0
+    },
+    
+    "services": [
+        "sshd",
+        "cron"
+    ],
+    
+    "log_file": "/opt/healthmon/healthmon.log",
+    "alert_log": "/opt/healthmon/alerts.log",
+    "syslog": "/dev/log"
+}
